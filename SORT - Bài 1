@@ -1,0 +1,74 @@
+import 'dart:io';
+
+class Sort {
+  List<int> list = List.filled(50, 0);
+  int size = 0;
+  Sort(int n) {
+    this.size = n;
+  }
+  InputList() {
+    for (int i = 0; i < size; ++i) {
+      String? str = stdin.readLineSync();
+      list[i] = int.parse(str!);
+    }
+  }
+
+  BubleSortAsscending() {
+    int temp;
+    for (int i = 1; i < size; ++i) {
+      for (int j = 0; j < size - i; ++j) {
+        if (list[j] > list[j + 1]) {
+          temp = list[j];
+          list[j] = list[j + 1];
+          list[j + 1] = temp;
+        }
+      }
+    }
+  }
+
+  BubleSortDescending() {
+    int temp;
+    for (int i = 0; i < size - 1; ++i) {
+      for (int j = 0; j < size - i - 1; ++j) {
+        if (list[j] < list[j + 1]) {
+          temp = list[j];
+          list[j] = list[j + 1];
+          list[j + 1] = temp;
+        }
+      }
+    }
+  }
+
+  MenuSort(int select) {
+    switch (select) {
+      case 1:
+        BubleSortAsscending();
+        print('Mang tang dan : ');
+        OutputList();
+        break;
+      case 2:
+        BubleSortDescending();
+        print('Mang giam dan : ');
+        OutputList();
+        break;
+    }
+  }
+
+  OutputList() {
+    for (int i = 0; i < size; ++i) {
+      print(list[i]);
+    }
+  }
+}
+
+void main() {
+  print("Nhap so luong phan tu cua LIST : ");
+  int n = int.parse(stdin.readLineSync()!);
+  Sort s = Sort(n);
+  print('Nhap mang : ');
+  s.InputList();
+  print('Moi nhap lua chon :');
+  print('''Nhap 1 : SAP XEP TANG DAN
+Nhap 2: SAP XEP GIAM DAN''');
+  s.MenuSort(int.parse(stdin.readLineSync()!));
+}
