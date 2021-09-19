@@ -1,0 +1,33 @@
+
+Bài 2: Sử dụng mảng 1 chiều nhập vào dãy số nguyên gồm n phần tử. Tính tổng các phần tử thuộc mảng
+
+import 'dart:io';
+
+class Array {
+  List<int> list = List.filled(20, 0);
+  int size = 0;
+  int sumOfdigits = 0;
+  Array(int n) {
+    this.size = n;
+  }
+  InputList() {
+    for (int i = 0; i < size; ++i) {
+      list[i] = int.parse(stdin.readLineSync()!);
+      sumOfdigits += list[i];
+    }
+  }
+
+  ShowSumOfList() {
+    print('Sum of list : $sumOfdigits');
+  }
+}
+
+void main() {
+  print("Nhap so luong phan tu cua LIST : ");
+  int n = int.parse(stdin.readLineSync()!);
+  Array s = Array(n);
+  print('Nhap mang : ');
+  s.InputList();
+  print('--------------');
+  s.ShowSumOfList();
+}
