@@ -1,0 +1,10 @@
+Nhập vào từ bàn phím 2 chuỗi. Tiến hành nối 2 chuỗi trên thành 1 chuỗi mới
+
+import 'dart:io';
+
+main(List<String> args) {
+  String? str1 = stdin.readLineSync();
+  String? str2 = stdin.readLineSync();
+  String? str = str1! + str2!;
+  print(str);
+}
