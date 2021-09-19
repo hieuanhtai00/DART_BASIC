@@ -67,7 +67,6 @@ class Sort {
 void main() {
   print("Nhap so luong phan tu cua LIST : ");
   int n = int.parse(stdin.readLineSync()!);
-  print(n);
   Sort s = Sort(n);
   print('Nhap mang : ');
   s.InputList();
