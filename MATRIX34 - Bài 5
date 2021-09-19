@@ -1,0 +1,53 @@
+Nhập mảng 2 chiều các số nguyên có dạng ma trận 3x4. Liệt kê các phần tử là số nguyên tố trong có trong mảng.
+
+import 'dart:io';
+
+import 'dart:math';
+
+CheckPrime(int n) {
+  int x = sqrt(n).round();
+  if (n < 2) return false;
+  for (int i = 2; i <= x; ++i) {
+    if (n % i == 0) return false;
+  }
+  return true;
+}
+
+class Array {
+  int row = 3;
+  int col = 4;
+  var list = [];
+  var Prime = [];
+  Array() {
+    for (int i = 0; i < row; ++i) {
+      list.add(List.filled(col, 0));
+    }
+  }
+  InputMatrix() {
+    for (int i = 0; i < row; ++i) {
+      for (int j = 0; j < col; ++j) {
+        list[i][j] = int.parse(stdin.readLineSync()!);
+        if (CheckPrime(list[i][j]) == true) {
+          Prime.add(list[i][j]);
+        }
+      }
+    }
+  }
+
+  ShowMatrix() {
+    for (var x in list) {
+      print(x);
+    }
+  }
+}
+
+void main() {
+  Array s = Array();
+  print('Nhap matrix 3x4 : ');
+  s.InputMatrix();
+  s.ShowMatrix();
+  print('----Prime in Matrix----');
+  s.Prime.forEach((element) {
+    print(element);
+  });
+}
