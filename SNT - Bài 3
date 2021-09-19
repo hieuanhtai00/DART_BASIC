@@ -1,0 +1,46 @@
+Sử dụng mảng 1 chiều nhập vào dãy số nguyên gồm n phần tử. In ra màn hình mảng các phần tử là số nguyên tố.
+
+import 'dart:io';
+import 'dart:math';
+
+CheckPrime(int n) {
+  int x = sqrt(n).round();
+  if (n < 2) return false;
+  for (int i = 2; i <= x; ++i) {
+    if (n % i == 0) return false;
+  }
+  return true;
+}
+
+class Array {
+  List<int> list = List.filled(20, 0);
+  int size = 0;
+  int sumOfdigits = 0;
+  Array(int n) {
+    this.size = n;
+  }
+  InputList() {
+    for (int i = 0; i < size; ++i) {
+      list[i] = int.parse(stdin.readLineSync()!);
+      sumOfdigits += list[i];
+    }
+  }
+
+  ShowPrime() {
+    print('------Prime in LIST-------');
+    for (int x in list) {
+      if (CheckPrime(x) == true) {
+        print('$x');
+      }
+    }
+  }
+}
+
+void main() {
+  print("Nhap so luong phan tu cua LIST : ");
+  int n = int.parse(stdin.readLineSync()!);
+  Array s = Array(n);
+  print('Nhap mang : ');
+  s.InputList();
+  s.ShowPrime();
+}
