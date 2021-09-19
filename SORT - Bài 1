@@ -1,15 +1,14 @@
 import 'dart:io';
 
 class Sort {
-  List<int> list = List.filled(50, 0);
+  List<int> list = List.filled(20, 0);
   int size = 0;
   Sort(int n) {
     this.size = n;
   }
   InputList() {
     for (int i = 0; i < size; ++i) {
-      String? str = stdin.readLineSync();
-      list[i] = int.parse(str!);
+      list[i] = int.parse(stdin.readLineSync()!);
     }
   }
 
@@ -45,11 +44,13 @@ class Sort {
         BubleSortAsscending();
         print('Mang tang dan : ');
         OutputList();
+        print('-----ACCEPT-----');
         break;
       case 2:
         BubleSortDescending();
         print('Mang giam dan : ');
         OutputList();
+        print('-----ACCEPT-----');
         break;
     }
   }
@@ -64,6 +65,7 @@ class Sort {
 void main() {
   print("Nhap so luong phan tu cua LIST : ");
   int n = int.parse(stdin.readLineSync()!);
+  print(n);
   Sort s = Sort(n);
   print('Nhap mang : ');
   s.InputList();
