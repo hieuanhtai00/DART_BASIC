@@ -1,0 +1,65 @@
+Nhập và mảng A, B là mảng 2 chiều. Các phân tử trong mảng là các số nguyên. Tính A x B.
+
+
+import 'dart:io';
+
+class Array {
+  int row = 0;
+  int col = 0;
+  var list = [];
+  Array(int row, int col) {
+    this.row = row;
+    this.col = col;
+    for (int i = 0; i < row; ++i) {
+      list.add(List.filled(col, 0));
+    }
+  }
+  InputMatrix() {
+    for (int i = 0; i < row; ++i) {
+      for (int j = 0; j < col; ++j) {
+        list[i][j] = int.parse(stdin.readLineSync()!);
+      }
+    }
+  }
+
+  Array operator *(Array b) {
+    Array c = Array(this.row, b.col);
+    for (int i = 0; i < this.row; ++i) {
+      for (int j = 0; j < b.col; ++j) {
+        c.list[i][j] = 0;
+        for (int k = 0; k < b.row; ++k)
+          c.list[i][j] += this.list[i][k] * b.list[k][j];
+      }
+    }
+    return c;
+  }
+
+  ShowMatrix() {
+    for (var x in list) {
+      print(x);
+    }
+  }
+}
+
+void main() {
+  int rowa, cola;
+  int rowb, colb;
+  print('Nhap hang cua ma tran A : ');
+  rowa = int.parse(stdin.readLineSync()!);
+  print('Nhap cot cua ma tran A : ');
+  cola = int.parse(stdin.readLineSync()!);
+  print('Nhap hang cua ma tran B : ');
+  rowb = int.parse(stdin.readLineSync()!);
+  print('Nhap cot cua ma tran B : ');
+  colb = int.parse(stdin.readLineSync()!);
+  if (cola != rowb) {
+    exit(0);
+  }
+  Array a = Array(rowa, cola);
+  Array b = Array(rowb, colb);
+  print('Nhap ma tran A : ');
+  a.InputMatrix();
+  print('Nhap ma tran B : ');
+  b.InputMatrix();
+  (a * b).ShowMatrix();
+}
