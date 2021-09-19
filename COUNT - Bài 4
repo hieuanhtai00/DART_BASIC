@@ -1,0 +1,40 @@
+Sử dụng mảng 1 chiều nhập vào dãy số nguyên gồm n phần tử. Nhập 1 số nguyên k bất kì. Kiểm tra k có thuộc mảng hay không và xuất hiện mấy lần trong mảng.
+
+import 'dart:io';
+
+class Array {
+  List<int> list = List.filled(20, 0);
+  int size = 0;
+  int sumOfdigits = 0;
+  Array(int n) {
+    this.size = n;
+  }
+  InputList() {
+    for (int i = 0; i < size; ++i) {
+      list[i] = int.parse(stdin.readLineSync()!);
+      sumOfdigits += list[i];
+    }
+  }
+
+  CounterValueK() {
+    int count = 0;
+    print('Nhap gia tri can tim : ');
+    int k = int.parse(stdin.readLineSync()!);
+    print('------Prime in LIST-------');
+    for (int i = 0; i < size; ++i) {
+      if (list[i] == k) {
+        ++count;
+      }
+    }
+    print('$k in list have counter : $count');
+  }
+}
+
+void main() {
+  print("Nhap so luong phan tu cua LIST : ");
+  int n = int.parse(stdin.readLineSync()!);
+  Array s = Array(n);
+  print('Nhap mang : ');
+  s.InputList();
+  s.CounterValueK();
+}
