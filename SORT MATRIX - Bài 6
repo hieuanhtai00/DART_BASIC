@@ -1,0 +1,65 @@
+Nhập mảng 2 chiều các số nguyên dương có dạng là ma trận 3x3. Sắp xếp lại các phần tử trong mảng theo thứ tự tăng dần.
+
+import 'dart:io';
+
+import 'dart:math';
+
+CheckPrime(int n) {
+  int x = sqrt(n).round();
+  if (n < 2) return false;
+  for (int i = 2; i <= x; ++i) {
+    if (n % i == 0) return false;
+  }
+  return true;
+}
+
+class Array {
+  int row = 3;
+  int col = 4;
+  var list = [];
+  var sort = [];
+  Array() {
+    for (int i = 0; i < row; ++i) {
+      list.add(List.filled(col, 0));
+    }
+  }
+  InputMatrix() {
+    for (int i = 0; i < row; ++i) {
+      for (int j = 0; j < col; ++j) {
+        list[i][j] = int.parse(stdin.readLineSync()!);
+      }
+    }
+  }
+
+  SortMatrix() {
+    for (int i = 0; i < row; ++i) {
+      for (int j = 0; j < col; ++j) {
+        sort.add(list[i][j]);
+      }
+    }
+    sort.sort();
+    int k = 0;
+    for (int i = 0; i < row; ++i) {
+      for (int j = 0; j < col; ++j) {
+        list[i][j] = sort[k];
+        ++k;
+      }
+    }
+  }
+
+  ShowMatrix() {
+    for (var x in list) {
+      print(x);
+    }
+  }
+}
+
+void main() {
+  Array s = Array();
+  print('Nhap matrix 3x4 : ');
+  s.InputMatrix();
+  s.ShowMatrix();
+  s.SortMatrix();
+  print('----Sort in Matrix----');
+  s.ShowMatrix();
+}
