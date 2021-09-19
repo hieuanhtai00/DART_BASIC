@@ -1,0 +1,19 @@
+Nhập và từ bàn phím 1 chuỗi và 1 kí tự bất kì. Kiểm tra kí tự vừa nhập vào có thuộc chuỗi hay không? Và kí tự đó xuất hiện mấy lần trong chuỗi
+
+import 'dart:io';
+
+main(List<String> args) {
+  int count = 0;
+  String? str = stdin.readLineSync();
+  String? c = stdin.readLineSync();
+  str!.codeUnits.forEach((element) {
+    if (c!.codeUnitAt(0) == element) {
+      ++count;
+    }
+  });
+  if (count > 0) {
+    print('Ton tai $c trong $str , count : $count');
+  } else {
+    print('NO');
+  }
+}
