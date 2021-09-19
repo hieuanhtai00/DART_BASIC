@@ -1,0 +1,32 @@
+Nhập vào từ bàn phím 1 chuỗi. Tạo menu với các chức năng sau:
+1. Viết hoa toàn bộ chuỗi
+2. Viết thường toàn bộ chuỗi
+3. Thoát
+
+
+import 'dart:io';
+
+MENU() {
+  print('''
+1. Viết hoa toàn bộ chuỗi
+2. Viết thường toàn bộ chuỗi
+3. Thoát''');
+}
+
+main(List<String> args) {
+  print('Nhap chuoi : ');
+  String? str = stdin.readLineSync();
+  MENU();
+  print('SELECT : ');
+  int select = int.parse(stdin.readLineSync()!);
+  switch (select) {
+    case 1:
+      print(str!.toUpperCase());
+      break;
+    case 2:
+      print(str!.toLowerCase());
+      break;
+    case 3:
+      exit(0);
+  }
+}
